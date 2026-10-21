@@ -413,15 +413,20 @@ body {
 /*footer*/
 html{
   scrollbar-color: var(--pumpkin) var(--cream);
-    scrollbar-width: auto;
+  scrollbar-width: auto;
 }
 
 footer {
-     margin-top: auto;
+  margin-top: auto;
   text-align: left;
   padding: 2rem 0;
-    border-top: 1px solid var(--pumpkin);
-    background: var(--gold);
+  border-top: 1px solid var(--pumpkin);
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
 }
 footer p {
   font-size: 0.85rem;
@@ -619,5 +624,9 @@ nav ul li.active,
 
 .contact-box a {
   color: var(--brown);
+  text-decoration: none;
+}
+
+a.contact-btn {
   text-decoration: none;
 }
