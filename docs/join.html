@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join Us</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=pilcrow-rounded@400&f[]=bonny@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="join">
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-icon"><img src="images/cheese-icon.png" alt=""></li>
+      <li><a href="about.html">About</a></li>
+      <li class="nav-icon"><img src="images/cheese-icon.png" alt=""></li>
+      <li class="active"><a href="join.html">Join Us</a></li>
+    </ul>
+  </nav>
+
+<main>
+  <section class="join-callout">
+  <h2>Enter your information below to join our mailing list!</h2>
+  <form id="join-form">
+  <div class="input-boxes">
+  <label for="firstname">First Name</label>
+  <input type="text" id="firstname" class="form-input" name="firstname" required>
+
+  <label for="lastname">Last Name</label>
+  <input type="text" id="lastname" class="form-input" name="lastname">
+
+  <label for="year">Year</label>
+  <select id="year" class="form-input" name="year" required>
+      <option value="">Select your year</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+      <option value="2029">2029</option>
+      <option value="2030">2030</option>
+      <option value="Graduate">Graduate</option>
+  </select>
+
+  <label for="netid">Net ID</label>
+  <input type="text" id="netid" class="form-input" name="netid" required>
+
+  <label for="allergies">Allergies? If none, leave blank.</label>
+  <input type="text" id="allergies" class="form-input"name="allergies">
+
+  <button type="submit">Submit</button>
+  </div>
+  </form>
+
+  <p id="form-message"></p>
+  </section>
+</main>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzufFZK7rRy1nXaPv3Fc-tI6-bYpQDyO2B5AflMI3CvN0altCgvdXLrdU6gL-FwvRRK/exec";
+    const form = document.getElementById("join-form");
+    const message = document.getElementById("form-message");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      message.textContent = "Sending...";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: new FormData(form),
+        mode: "no-cors"
+      })
+        .then(function () {
+          message.textContent = "Thanks! You're signed up.";
+          form.reset();
+        })
+        .catch(function () {
+          message.textContent = "Something went wrong. Please try again.";
+        });
+    });
+  </script>
+
+  <footer>
+    <p>Fall 2026</p>
+  </footer>
+</body>
+</html>
