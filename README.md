@@ -1,3 +1,3 @@
-Cheese Society website!
+Cheese Society website...
 
-(Checkout the link here!!)[https://lgzzzi-i.github.io/cheese_club/]
+[Checkout the link here!!](https://lgzzzi-i.github.io/cheese_club/)
