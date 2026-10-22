@@ -1,11 +1,16 @@
 :root {
-  --cream: #f6e8c9;
-  --gold: #f2be44;
-  --orange: #d1781f;
-  --pumpkin: #bf5b17;
-  --rust: #8c3b10;
-  --brown: #3b2314;
-  --moss: #5b5f23;
+  --cream: #f7efdc;       /* warm off-white, like the white dots */
+  --gold: #e8c468;        /* cheese yellow */
+  --orange: #d08f45;      /* the golden-orange behind the dots */
+  --pumpkin: #a8613a;     /* medium brown from the dots */
+  --rust: #7a3f22;        /* deep brown */
+  --brown: #3b2314;       /* title text brown, unchanged */
+  --moss: #8a7430;        /* olive gold for form focus */
+
+  /* nav bar colors */
+  --nav-bg: #e0b865;      /* muted gold */
+  --nav-hover: #8a4a2b;   /* brown hover pill */
+  --nav-border: #24150c;  /* darkest brown */
 }
 
 
@@ -20,59 +25,36 @@ body.join {
 /*navbar design*/
 
 nav {
-  background: var(--gold/50%);
-  border-radius: 1px;
-  padding: 0rem 3rem;
-  width: 60vw;
+  width: 100%;
   box-sizing: border-box;
-  margin: 2rem auto; 
+  margin: 0;
+  padding: 0 2rem;
+  background: var(--nav-bg);
+  border: none;
+  border-bottom: 2px solid var(--nav-border);
+  border-radius: 0;
+  box-shadow: none;
   view-transition-name: site-nav;
   font-family: 'Kulture';
   font-size: 20px;
-  --cut: 20px;
-  --bw: 1px;
-  --cut-inner: 19px;
   position: relative;
-  isolation: isolate;
-  background: var(--pumpkin);
-  border: none;
-  box-shadow: none;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cut)) 0,
-    100% var(--cut),
-    100% 100%,
-    var(--cut) 100%,
-    0 calc(100% - var(--cut))
-  );
-}
-
-nav::before {
-  content: '';
-  position: absolute;
-  inset: var(--bw);
-  z-index: -1;
-  background: var(--gold);
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cut-inner)) 0,
-    100% var(--cut-inner),
-    100% 100%,
-    var(--cut-inner) 100%,
-    0 calc(100% - var(--cut-inner))
-  );
 }
 
 
 nav ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /*items start on the left instead of spreading out*/
   align-items: center;
   width: 100%;
   list-style: none;
   margin: 0;
   box-sizing: border-box;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 0;
+}
+
+/*About gets an auto left margin, which pushes About and everything after it to the right*/
+nav ul li:has(a[href*="about" i]) {
+  margin-left: auto;
 }
 
 nav ul li{
@@ -92,7 +74,7 @@ nav ul li{
 
 nav ul li::after{
     content: '';
-    background: var(--rust);
+    background: var(--nav-hover);
     width: 100%;
     height: 100%;
     border-radius: 30px;
@@ -121,18 +103,8 @@ nav ul li a {
 }
 
 
+/*cheese icon removed from the nav*/
 nav ul li.nav-icon {
-  padding: 0;
-  cursor: default;
-}
-
-nav ul li.nav-icon img {
-  display: block;
-  height: 24px;
-  width: auto;
-}
-
-nav ul li.nav-icon::after {
   display: none;
 }
 
@@ -140,6 +112,13 @@ nav ul li.nav-icon::after {
 @view-transition {
   navigation: auto;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+}
+
 @keyframes blur-out {
   from { opacity: 1; filter: blur(0); }
   to   { opacity: 0; filter: blur(12px); }
@@ -186,7 +165,7 @@ h1 {
   margin-bottom: 15rem;
   padding: 2rem;
   font-size: 120px;
-  text-shadow: 4px 4px 8px #f6e8c9;
+  text-shadow: 4px 4px 8px var(--cream);
   letter-spacing: 1px;
 }
 h2 {
@@ -221,7 +200,7 @@ h4 {
   margin-bottom: 2rem;
   padding: 2rem;
   font-size: 80px;
-  text-shadow: 4px 4px 8px #f6e8c9;
+  text-shadow: 4px 4px 8px var(--cream);
   letter-spacing: 1px;
 }
 nav {
@@ -333,7 +312,7 @@ figcaption.first-meeting {
 /*background image formatting*/
 body {
   background-image:
-  linear-gradient(rgba(246, 232, 201, 0.17), rgba(246, 232, 201, 0.17)),
+  linear-gradient(rgba(244, 236, 220, 0.17), rgba(244, 236, 220, 0.17)),
   url("images/background5.jpeg");
   background-size: cover;
   background-blend-mode: normal;  
@@ -369,8 +348,7 @@ body {
 
 .events-callout li {
   padding: 0.8rem 0;
-  border-top: 1px solid #bf5b1766;
-}
+border-top: 1px solid #a8613a66;}
 
 .landing-content {
   display: flex;
@@ -384,7 +362,7 @@ body {
   width: 100%;
   margin-top: 15vh;
   padding: 1rem 0;
-  background: #d2781fe6;
+  background: #d08f45e6;
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
   margin-bottom: 45vh;
 }
@@ -421,7 +399,7 @@ footer {
   text-align: left;
   padding: 2rem 0;
   border-top: 1px solid var(--pumpkin);
-  background: var(--gold);
+  background: var(--nav-bg);
   display: flex;
   align-items: center;
   justify-content: center;
