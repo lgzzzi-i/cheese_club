@@ -26,14 +26,26 @@
       <p>We host events every 1-2 months—ranging from tasting, to field trips across the Potomac, to mongering workshops. If you have any questions, suggestions, or just want to tell us your favorite cheese, see our contact info below.</p>
       <p>President: Lila Gizzie, CAS'29
         <button type="button" class="contact-btn" id="contact-btn">Contact</button>
-        <span class="contact-box" id="contact-box" hidden>
-          <a href="mailto:lg1123@georgetown.edu">lg1123@georgetown.edu</a>
-        </span></p>
+        <span class="contact-box" id="contact-box" hidden></span></p>
       <p>Pun-Master(s): Megan Geiger, Julia Carvalho, Ava Terosky, Quinn Ross</p>
     </section>
   </main>
   <footer>
     <p>Fall 2026</p>
   </footer>
+
+  <script>
+    const btn = document.getElementById('contact-btn');
+    const box = document.getElementById('contact-box');
+
+    const user = 'lg1123';
+    const domain = 'georgetown.edu';
+
+    btn.addEventListener('click', function () {
+      const email = user + '@' + domain;
+      box.innerHTML = '<a href="mailto:' + email + '">' + email + '</a>';
+      box.hidden = false;
+    });
+  </script>
 </body>
 </html>
